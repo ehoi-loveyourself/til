@@ -1,5 +1,7 @@
 # Today I Learned
 
+## DataStructure 🧬
+
 ## Spring 🌿
 Spring mvc ([링크](spring_mvc.md))
 
