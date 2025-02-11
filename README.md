@@ -1,7 +1,7 @@
 # Today I Learned
 
 ## DataStructure 🧬
-Set ([링크]())
+Set ([링크](datastructure.md))
 
 ## Spring 🌿
 Spring mvc ([링크](spring_mvc.md))
