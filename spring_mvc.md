@@ -78,3 +78,13 @@ ex) `APPLICATION_JSON_VALUE`, `APPLICATION_XML_VALUE` 등
 [스프링 공식 문서](https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-requestmapping.html#mvc-ann-requestmapping-consumes)
 
 [블로그](https://mungto.tistory.com/438)
+
+## SpringMVC 구조
+
+![SpringMVC_Structure](./images/springmvc_structure.png)
+
+1. 요청 URL을 처리할 수 있는 핸들러를 조회하기 위해 먼저 핸들러 매핑을 통해 조회한다.
+2. 그 다음 해당 핸들러를 처리할 수 있는 핸들러 어댑터를 조회한다.
+3. 핸들러 어댑터를 리턴받았다면 그 핸들러 어댑터를 통해 핸들러를 호출하고, 요청에 응답하는 정보가 담겨있는 Model과 View 정보를 리턴받는다.
+4. View Resolver를 호출해서 View를 반환 받고 render를 호출한 뒤
+5. HTML로 응답한다.
