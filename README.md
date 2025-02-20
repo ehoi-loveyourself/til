@@ -1,7 +1,9 @@
 # Today I Learned
 
 ## Computer Science
-Process & Thread
+Process & Thread ([링크](process_thread.md))
+
+CPU 스케줄링 ([링크](cpu_scheduling.md))
 
 ## DataStructure 🧬
 Set ([링크](datastructure.md))
