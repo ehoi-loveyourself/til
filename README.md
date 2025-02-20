@@ -1,5 +1,8 @@
 # Today I Learned
 
+## Computer Science
+Process & Thread
+
 ## DataStructure 🧬
 Set ([링크](datastructure.md))
 
