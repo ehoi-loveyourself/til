@@ -10,7 +10,7 @@ public class ThreadPoolExample {
         // 여러 작업을 제출
         for (int i = 0; i < 10; i++) {
             final int taskId = i;
-            executorService.submit(() -> {
+            executorService.execute(() -> {
                 try {
                     System.out.println("작업 " + taskId + " 시작! - " + Thread.currentThread().getName());
                     Thread.sleep(1000); // 1초 동안 작업 대기
