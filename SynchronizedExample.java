@@ -13,7 +13,7 @@ public class SynchronizedExample {
 class BankAccount {
     private int balance = 100;
 
-    public void withdraw(String name, int amount) {
+    public synchronized void withdraw(String name, int amount) {
         if (balance >= amount) {
             System.out.println(name + " 출금 시도: " + amount);
             try {
