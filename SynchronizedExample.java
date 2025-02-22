@@ -16,7 +16,7 @@ class BankAccount {
     private int balance = 100;
     private ReentrantLock lock = new ReentrantLock(); // 락 선언
 
-    public synchronized void withdraw(String name, int amount) {
+    public void withdraw(String name, int amount) {
         lock.lock();
         try {
             if (balance >= amount) {
