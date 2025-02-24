@@ -1,4 +1,4 @@
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SynchronizedExample {
     public static void main(String[] args) {
@@ -13,26 +13,20 @@ public class SynchronizedExample {
 }
 
 class BankAccount {
-    private int balance = 100;
-    private ReentrantLock lock = new ReentrantLock(); // 락 선언
+    private AtomicInteger balance = new AtomicInteger(100);
 
     public void withdraw(String name, int amount) {
-        lock.lock();
-        try {
-            if (balance >= amount) {
-                System.out.println(name + " 출금 시도: " + amount);
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                balance -= amount;
-                System.out.println(name + " 출금 완료! 남은 잔액: " + balance);
-            } else {
-                System.out.println(name + " 출금 실패! 잔액 부족.");
+        if (balance.get() >= amount) {
+            System.out.println(name + " 출금 시도: " + amount);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        } finally {
-            lock.unlock(); // 반드시 락 해제
+            balance.addAndGet(-amount);
+            System.out.println(name + " 출금 완료! 남은 잔액: " + balance);
+        } else {
+            System.out.println(name + " 출금 실패! 잔액 부족.");
         }
     }
 }
