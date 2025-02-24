@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class DeadlockExample {
@@ -17,32 +18,34 @@ class SharedResource {
     private ReentrantLock lock2 = new ReentrantLock();
 
     public void method1() {
-        lock1.lock();
-        System.out.println("method1에서 lock1 획득");
         try {
-            Thread.sleep(100);
+            if (lock1.tryLock(3, TimeUnit.SECONDS)) {
+                System.out.println("method1에서 lock1 획득");
+
+                if (lock2.tryLock(3, TimeUnit.SECONDS)) {
+                    System.out.println("method1에서 lock2 획득");
+                    lock2.unlock();
+                }
+                lock1.unlock();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        lock2.lock();
-        System.out.println("method1에서 lock2 획득");
-        lock2.unlock();
-        lock1.unlock();
     }
 
     public void method2() {
-        lock2.lock();
-        System.out.println("method2에서 lock2 획득");
         try {
-            Thread.sleep(100);
+            if (lock2.tryLock(3, TimeUnit.MILLISECONDS)) {
+                System.out.println("method2에서 lock2 획득");
+
+                if (lock1.tryLock(3, TimeUnit.MILLISECONDS)) {
+                    System.out.println("method2에서 lock1 획득");
+                    lock1.unlock();
+                }
+                lock2.unlock();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        lock1.lock();
-        System.out.println("method2에서 lock1 획득");
-        lock1.unlock();
-        lock2.unlock();
     }
 }
