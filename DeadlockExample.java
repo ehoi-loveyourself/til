@@ -35,10 +35,10 @@ class SharedResource {
 
     public void method2() {
         try {
-            if (lock2.tryLock(3, TimeUnit.MILLISECONDS)) {
+            if (lock2.tryLock(3, TimeUnit.SECONDS)) {
                 System.out.println("method2에서 lock2 획득");
 
-                if (lock1.tryLock(3, TimeUnit.MILLISECONDS)) {
+                if (lock1.tryLock(3, TimeUnit.SECONDS)) {
                     System.out.println("method2에서 lock1 획득");
                     lock1.unlock();
                 }
