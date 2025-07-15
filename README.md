@@ -17,6 +17,9 @@ Spring WebFlux([링크](spring_webflux.md))
 
 Spring Cloud Gateway ([링크](https://github.com/ehoi-loveyourself/spring-cloud-gateway))
 
+## Infra ⚙️
+Nginx ([링크](nginx.md))
+
 ## Build 🧱
 Ant ([링크](build_ant.md))
 
